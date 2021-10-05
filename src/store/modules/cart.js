@@ -10,7 +10,7 @@ export default {
     },
 
     getters: {
-        cartProducts (state, getters, rootState, rootGetters) {
+        cartProducts (state, getters, rootState) {
             return state.items.map(cartItem => {
                 const product = rootState.products.items.find(product => product.id === cartItem.id)
                 return {
@@ -40,7 +40,7 @@ export default {
     },
 
     actions: {
-        addProductToCart({state, commit, rootState, rootGetters}, product) {
+        addProductToCart({state, commit, rootGetters}, product) {
             if (rootGetters['products/productIsInStock'](product)) {
                 const cartItem = state.items.find(item => item.id === product.id)
                 if (!cartItem) {

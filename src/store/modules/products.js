@@ -7,7 +7,7 @@ export default {
         items: []
     },
     getters: {
-        availableProducts (state, getters) {
+        availableProducts (state) {
             return state.items.filter(product => product.inventory > 0)
         },
         productIsInStock () {
